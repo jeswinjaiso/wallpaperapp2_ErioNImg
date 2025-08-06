@@ -3,7 +3,12 @@ export class Login{
     password:string='';
 }
 
-class Registration{
+export class Registration{
+    Name:string='';
+    Email:string='';
+    UserName:string='';
+    Password:string='';
+    Category:string='';
 
 }
 

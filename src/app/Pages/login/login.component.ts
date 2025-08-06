@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Login } from 'src/app/Models/Login';
-import {HttpClient} from '@angular/common/http'
+import { Login,Registration } from 'src/app/Models/Login';
+
+import {HttpClient,HttpClientModule} from '@angular/common/http'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +14,22 @@ import {HttpClient} from '@angular/common/http'
 })
 export class LoginComponent {
   loginObj:Login;
-  constructor(private http: HttpClient){
-    this.loginObj=new Login();
+  regObj:Registration;
+  
+  constructor(private http: HttpClient,private router: Router){
+    this.loginObj=new Login(); 
+    this.regObj=new Registration();   
   }
+  
   onLogin(){
-    this.http.post('',this.loginObj).subscribe(
+    this.http.post('http://localhost:34302/api/login',{ uname:this.loginObj.username,pwd:this.loginObj.password }).subscribe(
       (res:any)=>{
         if(res.result){
-          alert("Login Succes")
+          alert("Login Succes");
+          this.router.navigate(['/']);
         }
         else{
-          alert(res.message)
+          console.log(res.message)
         }
       }
     )
