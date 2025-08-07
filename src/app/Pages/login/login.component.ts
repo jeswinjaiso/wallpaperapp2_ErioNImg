@@ -16,17 +16,39 @@ export class LoginComponent {
   loginObj:Login;
   regObj:Registration;
   
+  
+  
   constructor(private http: HttpClient,private router: Router){
     this.loginObj=new Login(); 
-    this.regObj=new Registration();   
+    this.regObj=new Registration();  
+    
   }
   
   onLogin(){
-    this.http.post('http://localhost:34302/api/login',{ uname:this.loginObj.username,pwd:this.loginObj.password }).subscribe(
+    this.http.post('http://localhost:34302/api/user/login',{ uname:this.loginObj.username,pwd:this.loginObj.password }).subscribe(
       (res:any)=>{
         if(res.result){
           alert("Login Succes");
           this.router.navigate(['/']);
+        }
+        else{
+          console.log(res.message)
+        }
+      }
+    )
+  }
+
+  onRegistration(){
+    
+    this.http.post('http://localhost:34302/api/user/registration',
+      this.regObj).subscribe(
+      (res:any)=>{
+        if(res.message){
+          alert("reg Succes !!!");
+          this.router.navigate(['/']);
+        }
+        else if(res.alr){
+           alert(res.alr);
         }
         else{
           console.log(res.message)

@@ -4,11 +4,9 @@ export class Login{
 }
 
 export class Registration{
-    Name:string='';
-    Email:string='';
-    UserName:string='';
-    Password:string='';
-    Category:string='';
-
+    name:string='';
+    email:string='';
+    username:string='';
+    password:string='';
 }
 
