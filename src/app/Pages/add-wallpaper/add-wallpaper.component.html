@@ -1,1 +1,37 @@
-<p>add-wallpaper works!</p>
+<div class="container">
+
+    <div class="form-container">
+    <h2 class="form-title">Add New Wallpaper</h2>
+    <form>
+      <!-- Wallpaper Name -->
+      <div class="mb-3">
+        <label for="wallpaperName" class="form-label">Wallpaper Name</label>
+        <input type="text" class="form-control" id="wallpaperName" placeholder="Enter wallpaper name" required>
+      </div>
+
+      <!-- Category -->
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" required>
+          <option value="" selected disabled>Select category</option>
+          <option value="nature">Nature</option>
+          <option value="abstract">Abstract</option>
+          <option value="technology">Technology</option>
+          <option value="space">Space</option>
+        </select>
+      </div>
+
+      <!-- File Upload -->
+      <div class="mb-3">
+        <label for="wallpaperFile" class="form-label" >Upload Wallpaper</label>
+        <input class="form-control" type="file" id="wallpaperFile" (change)="onFileSelected($event)" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg" >Add Wallpaper</button>
+      </div>
+    </form>
+  </div>
+
+</div>
